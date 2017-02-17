@@ -14,20 +14,25 @@ class GameViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		// Create a new view to present a SKScene on later, and return if there is an error.
+		// Create a new view to present a SKScene on later, or return if there is an error.
 		guard let view = self.view as! SKView? else {
 			return
 		}
 
-		// Load the SKScene from GameScene.sks.
-		if let scene = SKScene(fileNamed: "GameScene") {
-			// Set the scale mode to scale to fit the window.
-			scene.scaleMode = SKSceneScaleMode.aspectFill
-
-			// Present the scene.
-			view.presentScene(scene)
+		// Load the SKScene from GameScene.sks, or return if there is an error.
+		guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
+			return
 		}
-		
+
+		// Set the scale mode to scale to fit the window.
+		scene.scaleMode = SKSceneScaleMode.aspectFill
+
+		// Tell the scene what its parent is, so that it can do transitions later.
+		scene.parentViewController = self
+
+		// Present the scene.
+		view.presentScene(scene)
+
 		view.ignoresSiblingOrder = true
 		view.showsFPS = false
 		view.showsNodeCount = false
@@ -39,7 +44,7 @@ class GameViewController: UIViewController {
 
 	override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
 		if UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone {
-			return UIInterfaceOrientationMask.allButUpsideDown
+			return UIInterfaceOrientationMask.landscape
 		} else {
 			return UIInterfaceOrientationMask.all
 		}

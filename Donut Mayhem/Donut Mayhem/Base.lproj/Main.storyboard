@@ -1,20 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2659" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+    <device id="retina4_0" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="Donut_Mayhem" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8aa-yV-Osq"/>
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -22,5 +29,114 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="Pvi-Ee-ogH">
+            <objects>
+                <viewController storyboardIdentifier="GameOverViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LJC-ze-WVd" customClass="GameOverViewController" customModule="Donut_Mayhem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gh1-nz-sTJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="A9H-lI-bID"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nsW-HS-DBV">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.01" translatesAutoresizingMaskIntoConstraints="NO" id="efr-Gn-6k0">
+                                <rect key="frame" x="0.0" y="30" width="275.5" height="64"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OVER" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.0099999997764825821" translatesAutoresizingMaskIntoConstraints="NO" id="jmg-w7-ot0">
+                                <rect key="frame" x="292.5" y="30" width="275.5" height="64"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="100"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprinkleDonut" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-tB-1nV">
+                                <rect key="frame" x="292.5" y="39.5" width="44.5" height="44.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UDA-tB-1nV" secondAttribute="height" multiplier="1:1" id="4Qy-9H-iuu"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Bb3-4d-jr2">
+                                <rect key="frame" x="0.0" y="124" width="568" height="32"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Highscore: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="SDa-1w-hfH">
+                                <rect key="frame" x="0.0" y="176" width="568" height="32"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1d-Eh-rG3">
+                                <rect key="frame" x="142" y="228" width="284" height="64"/>
+                                <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
+                                <state key="normal" title="PLAY AGAIN">
+                                    <color key="titleColor" red="0.89050177444794953" green="0.0" blue="0.014841696240799106" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="SNs-cc-NDC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mCM-es-71d">
+                                <rect key="frame" x="453" y="263" width="110" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="mCM-es-71d" secondAttribute="height" multiplier="55:26" id="JpR-V3-KGB"/>
+                                    <constraint firstAttribute="width" constant="110" id="kAl-QW-J8e"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="shop"/>
+                                <connections>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="iLb-PY-z1S"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.52346920967102051" blue="0.7660786509513855" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="e1d-Eh-rG3" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.5" id="6an-Ya-CPo"/>
+                            <constraint firstAttribute="trailing" secondItem="mCM-es-71d" secondAttribute="trailing" constant="5" id="7X4-1X-i7m"/>
+                            <constraint firstItem="UDA-tB-1nV" firstAttribute="centerY" secondItem="jmg-w7-ot0" secondAttribute="centerY" id="9vG-ea-hdz"/>
+                            <constraint firstItem="SDa-1w-hfH" firstAttribute="top" secondItem="Bb3-4d-jr2" secondAttribute="bottom" constant="20" id="AEm-TG-4jd"/>
+                            <constraint firstItem="efr-Gn-6k0" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.485" id="Aw4-HM-SNu"/>
+                            <constraint firstItem="Bb3-4d-jr2" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="GNj-8J-0pb"/>
+                            <constraint firstItem="Bb3-4d-jr2" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.1" id="Hck-dU-XbZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SDa-1w-hfH" secondAttribute="trailing" constant="-20" id="N8J-SC-Wvh"/>
+                            <constraint firstItem="efr-Gn-6k0" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.2" id="NoM-xu-Bd6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bb3-4d-jr2" secondAttribute="trailing" constant="-20" id="Od4-Qe-PjT"/>
+                            <constraint firstItem="e1d-Eh-rG3" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.2" id="U3D-mS-OQm"/>
+                            <constraint firstItem="SDa-1w-hfH" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="WMR-7B-7OT"/>
+                            <constraint firstItem="jmg-w7-ot0" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.2" id="Wsd-Si-a9z"/>
+                            <constraint firstItem="e1d-Eh-rG3" firstAttribute="top" secondItem="SDa-1w-hfH" secondAttribute="bottom" constant="20" id="Z4r-zC-yeg"/>
+                            <constraint firstItem="UDA-tB-1nV" firstAttribute="height" secondItem="jmg-w7-ot0" secondAttribute="height" multiplier="0.7" id="ct2-JS-Zyo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jmg-w7-ot0" secondAttribute="trailing" constant="-20" id="d7L-Tp-Cg6"/>
+                            <constraint firstItem="jmg-w7-ot0" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.485" id="gh3-qf-uWP"/>
+                            <constraint firstItem="jmg-w7-ot0" firstAttribute="top" secondItem="Gh1-nz-sTJ" secondAttribute="bottom" constant="10" id="iPy-Lm-ZGk"/>
+                            <constraint firstItem="efr-Gn-6k0" firstAttribute="top" secondItem="Gh1-nz-sTJ" secondAttribute="bottom" constant="10" id="lP9-yY-L8l"/>
+                            <constraint firstItem="jmg-w7-ot0" firstAttribute="leading" secondItem="UDA-tB-1nV" secondAttribute="leading" id="lTc-5E-pA9"/>
+                            <constraint firstItem="Bb3-4d-jr2" firstAttribute="centerY" secondItem="nsW-HS-DBV" secondAttribute="centerY" constant="-20" id="pfB-Jz-JsM"/>
+                            <constraint firstItem="e1d-Eh-rG3" firstAttribute="centerX" secondItem="nsW-HS-DBV" secondAttribute="centerX" id="pgp-jj-Kwq"/>
+                            <constraint firstItem="efr-Gn-6k0" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="rKc-4X-6a9"/>
+                            <constraint firstItem="SDa-1w-hfH" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.1" id="sXs-Sx-bYw"/>
+                            <constraint firstAttribute="bottom" secondItem="mCM-es-71d" secondAttribute="bottom" constant="5" id="zia-g2-MnS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="yourHighscoreLabel" destination="SDa-1w-hfH" id="dHN-M4-928"/>
+                        <outlet property="yourScoreLabel" destination="Bb3-4d-jr2" id="wkY-gL-jKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JVH-Lc-g9T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979.16041979010504" y="122.40000000000001"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="shop" width="1980" height="936"/>
+        <image name="sprinkleDonut" width="1600" height="1600"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="SNs-cc-NDC"/>
+    </inferredMetricsTieBreakers>
 </document>

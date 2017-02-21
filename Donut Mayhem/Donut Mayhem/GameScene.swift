@@ -150,6 +150,8 @@ class GameScene: SKScene {
 		self.backgroundColor = randomizeColor(withSaturation: backgroundSaturation,
 			brightness: backgroundBrightness)
 
+		self.size = UIScreen.main.bounds.size
+
 		createLabels(withFont: labelsFont, fontSize: labelsFontSize)
 
 		createMuffin()

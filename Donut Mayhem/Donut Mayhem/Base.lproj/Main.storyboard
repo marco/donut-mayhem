@@ -54,12 +54,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicDonut" translatesAutoresizingMaskIntoConstraints="NO" id="UDA-tB-1nV">
-                                <rect key="frame" x="247" y="39.5" width="45" height="44.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="UDA-tB-1nV" secondAttribute="height" multiplier="1:1" id="4Qy-9H-iuu"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Score: 0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="Bb3-4d-jr2">
                                 <rect key="frame" x="0.0" y="124" width="480" height="32"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
@@ -98,7 +92,6 @@
                         <constraints>
                             <constraint firstItem="e1d-Eh-rG3" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.5" id="6an-Ya-CPo"/>
                             <constraint firstAttribute="trailing" secondItem="mCM-es-71d" secondAttribute="trailing" constant="5" id="7X4-1X-i7m"/>
-                            <constraint firstItem="UDA-tB-1nV" firstAttribute="centerY" secondItem="jmg-w7-ot0" secondAttribute="centerY" id="9vG-ea-hdz"/>
                             <constraint firstItem="SDa-1w-hfH" firstAttribute="top" secondItem="Bb3-4d-jr2" secondAttribute="bottom" constant="20" id="AEm-TG-4jd"/>
                             <constraint firstItem="efr-Gn-6k0" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.485" id="Aw4-HM-SNu"/>
                             <constraint firstItem="Bb3-4d-jr2" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="GNj-8J-0pb"/>
@@ -110,12 +103,10 @@
                             <constraint firstItem="SDa-1w-hfH" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="WMR-7B-7OT"/>
                             <constraint firstItem="jmg-w7-ot0" firstAttribute="height" secondItem="nsW-HS-DBV" secondAttribute="height" multiplier="0.2" id="Wsd-Si-a9z"/>
                             <constraint firstItem="e1d-Eh-rG3" firstAttribute="top" secondItem="SDa-1w-hfH" secondAttribute="bottom" constant="20" id="Z4r-zC-yeg"/>
-                            <constraint firstItem="UDA-tB-1nV" firstAttribute="height" secondItem="jmg-w7-ot0" secondAttribute="height" multiplier="0.7" id="ct2-JS-Zyo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jmg-w7-ot0" secondAttribute="trailing" constant="-20" id="d7L-Tp-Cg6"/>
                             <constraint firstItem="jmg-w7-ot0" firstAttribute="width" secondItem="nsW-HS-DBV" secondAttribute="width" multiplier="0.485" id="gh3-qf-uWP"/>
                             <constraint firstItem="jmg-w7-ot0" firstAttribute="top" secondItem="Gh1-nz-sTJ" secondAttribute="bottom" constant="10" id="iPy-Lm-ZGk"/>
                             <constraint firstItem="efr-Gn-6k0" firstAttribute="top" secondItem="Gh1-nz-sTJ" secondAttribute="bottom" constant="10" id="lP9-yY-L8l"/>
-                            <constraint firstItem="jmg-w7-ot0" firstAttribute="leading" secondItem="UDA-tB-1nV" secondAttribute="leading" id="lTc-5E-pA9"/>
                             <constraint firstItem="Bb3-4d-jr2" firstAttribute="centerY" secondItem="nsW-HS-DBV" secondAttribute="centerY" constant="-20" id="pfB-Jz-JsM"/>
                             <constraint firstItem="e1d-Eh-rG3" firstAttribute="centerX" secondItem="nsW-HS-DBV" secondAttribute="centerX" id="pgp-jj-Kwq"/>
                             <constraint firstItem="efr-Gn-6k0" firstAttribute="leading" secondItem="nsW-HS-DBV" secondAttribute="leadingMargin" constant="-20" id="rKc-4X-6a9"/>
@@ -559,6 +550,6 @@
         <image name="swagMuffin" width="800" height="1720"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Kt0-BO-rN4"/>
+        <segue reference="29d-Uh-NLw"/>
     </inferredMetricsTieBreakers>
 </document>

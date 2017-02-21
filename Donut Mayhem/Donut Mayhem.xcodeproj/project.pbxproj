@@ -20,6 +20,7 @@
 		7DE3CD691E5768E300C8A202 /* bonus.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DE3CD651E5768E300C8A202 /* bonus.wav */; };
 		7DE3CD6A1E5768E300C8A202 /* newDonut.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DE3CD661E5768E300C8A202 /* newDonut.wav */; };
 		7DE3CD6C1E57696000C8A202 /* shoot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7DE3CD6B1E57696000C8A202 /* shoot.wav */; };
+		7DE3CD6E1E57AA9700C8A202 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE3CD6D1E57AA9700C8A202 /* ShopViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7DE3CD651E5768E300C8A202 /* bonus.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bonus.wav; sourceTree = "<group>"; };
 		7DE3CD661E5768E300C8A202 /* newDonut.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = newDonut.wav; sourceTree = "<group>"; };
 		7DE3CD6B1E57696000C8A202 /* shoot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shoot.wav; sourceTree = "<group>"; };
+		7DE3CD6D1E57AA9700C8A202 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				7D9121D11E563AA300942AA7 /* GameScene.swift */,
 				7D9121D31E563AA300942AA7 /* GameViewController.swift */,
 				7DE3CD601E575B9E00C8A202 /* GameOverViewController.swift */,
+				7DE3CD6D1E57AA9700C8A202 /* ShopViewController.swift */,
 				7D9121D51E563AA300942AA7 /* Main.storyboard */,
 				7D9121D81E563AA300942AA7 /* Assets.xcassets */,
 				7D9121DA1E563AA300942AA7 /* LaunchScreen.storyboard */,
@@ -177,6 +180,7 @@
 			files = (
 				7DE3CD611E575B9E00C8A202 /* GameOverViewController.swift in Sources */,
 				7D9121D21E563AA300942AA7 /* GameScene.swift in Sources */,
+				7DE3CD6E1E57AA9700C8A202 /* ShopViewController.swift in Sources */,
 				7D9121D41E563AA300942AA7 /* GameViewController.swift in Sources */,
 				7D9121CC1E563AA300942AA7 /* AppDelegate.swift in Sources */,
 			);

@@ -16,6 +16,10 @@ class GameOverViewController: UIViewController {
 	@IBOutlet var yourHighscoreLabel: UILabel!
 
 	override func viewDidLoad() {
+		/*
+			NOTE: Other game over related functions (such as setting a highscore or adding coins) are done
+			in GameScene.
+		*/
 		super.viewDidLoad()
 
 		yourScoreLabel.text = "Your Score: " + String(finalScore)

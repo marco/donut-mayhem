@@ -13,7 +13,7 @@ import GameplayKit
 class GameScene: SKScene {
 	/// Muffin types that the user can choose from.
 	enum MuffinType: String {
-		/// A basic, default muffin, with a light top and a blue wrapper.
+		/// A basic, default blueberry muffin, with a light top and a blue wrapper.
 		case basicMuffin
 
 		/// A bran muffin, with a darker top and an orange wrapper.
@@ -37,11 +37,20 @@ class GameScene: SKScene {
 		/// A bagel.
 		case bagelDonut
 
+		/// A basic, default sprinkle donut, with pink frosting and rainbow sprinkles.
+		case basicDonut
+
 		/// An evil donut with purple frosting and red and orange sprinkles.
 		case evilDonut
 
-		/// A sprinkle donut, with pink frosting and rainbow sprinkles.
-		case sprinkleDonut
+		/// A small, donut-hole, which is hard to hit!
+		case holeDonut
+
+		/// A jelly donut with red jelly.
+		case jellyDonut
+
+		/// A green nerdy donut with glasses and teeth.
+		case nerdDonut
 	}
 
 	/// The saturation used in the randomly-generated background color.
@@ -64,6 +73,9 @@ class GameScene: SKScene {
 
 	/// The size of a donut `SKSpriteNode`.
 	let donutSize = CGSize(width: 40, height: 40)
+
+	/// The size of a `holeDonut` `SKSpriteNode`.
+	let holeDonutSize = CGSize(width: 20, height: 20)
 
 	/// The size of a bomb `SKSpriteNode`.
 	let bombSize = CGSize(width: 38, height: 46)
@@ -269,6 +281,7 @@ class GameScene: SKScene {
 		*/
 		guard let muffinTypeString = UserDefaults.standard.string(forKey: "muffinType") else {
 			UserDefaults.standard.set(MuffinType.basicMuffin.rawValue, forKey: "muffinType")
+			UserDefaults.standard.set([MuffinType.basicMuffin.rawValue], forKey: "ownedMuffins")
 			createMuffin()
 			return
 		}
@@ -346,7 +359,7 @@ class GameScene: SKScene {
 	}
 
 	/**
-		Creates a donut of the current type, or a `sprinkleDonut` if the user hasn’t chosen yet, from a random
+		Creates a donut of the current type, or a `basicDonut` if the user hasn’t chosen yet, from a random
 		location. Then, the donut moves towards the muffin with the specified speed.
 		
 		- Parameters:
@@ -354,19 +367,27 @@ class GameScene: SKScene {
 	*/
 	func createDonut(withSpeed speed: TimeInterval) {
 		run(SKAction.playSoundFileNamed("newDonut.wav", waitForCompletion: false))
+
 		/*
 			Get the current donutType that the user has selected, or, if they don’t have one selected,
 			select one automatically and retry.
 		*/
 		guard let donutTypeString = UserDefaults.standard.string(forKey: "donutType") else {
-			UserDefaults.standard.set(DonutType.sprinkleDonut.rawValue, forKey: "donutType")
+			UserDefaults.standard.set(DonutType.basicDonut.rawValue, forKey: "donutType")
+			UserDefaults.standard.set([DonutType.basicDonut.rawValue], forKey: "ownedDonuts")
 			createDonut(withSpeed: speed)
 			return
 		}
 
 		// Create a new SKSpriteNode with a texture equal to the image with donutType’s value.
 		let donutImage = UIImage.init(named: donutTypeString)
+
 		let donutSprite = SKSpriteNode.init(texture: SKTexture.init(image: donutImage!), size: donutSize)
+
+		// If its a holeDonut, override the size property.
+		if donutTypeString == DonutType.holeDonut.rawValue {
+			donutSprite.size = holeDonutSize
+		}
 
 		donutSprite.position = generateRandomEdgePosition()
 
@@ -390,7 +411,7 @@ class GameScene: SKScene {
 	*/
 	func generateRandomEdgePosition() -> CGPoint {
 		/*
-			Generate random booleans for what edge to place the point based on a number from 0 to 1 being
+			Generate random booleans for what edge to place the point based on an integer from 0 to 1 being
 			equal to 0.
 		*/
 		let onSide = arc4random_uniform(2) == 0
@@ -571,6 +592,9 @@ class GameScene: SKScene {
 				as? GameOverViewController else {
 				return
 			}
+
+			let currentCoins = UserDefaults.standard.integer(forKey: "coins")
+			UserDefaults.standard.set(currentCoins + self.score, forKey: "coins")
 
 			viewController.finalScore = self.score
 

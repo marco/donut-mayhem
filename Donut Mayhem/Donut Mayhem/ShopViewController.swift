@@ -348,35 +348,82 @@ class ShopViewController: UIViewController {
 		var unownedMuffinStrings = getUnownedMuffinStrings()
 		var unownedDonutStrings = getUnownedDonutStrings()
 
-		// Decide whether to unlock a muffin or donut by seeing if a random integer from 0 to 1 is equal to 0.
-		let unlockMuffin = arc4random_uniform(2) == 0
+		guard unownedMuffinStrings.count > 0 || unownedDonutStrings.count > 0 else {
+			let alertController = UIAlertController(title: nil, message: "You’ve unlocked everything!",
+				preferredStyle: UIAlertControllerStyle.alert)
+			alertController.addAction(UIAlertAction(title: "Okay!", style: UIAlertActionStyle.cancel,
+				handler: nil))
+			self.present(alertController, animated: true, completion: nil)
 
-		if unlockMuffin {
-			let randomIndex = arc4random_uniform(UInt32(unownedMuffinStrings.count))
+			return
+		}
+
+		if unownedMuffinStrings.count > 0 && unownedDonutStrings.count > 0 {
+			/*
+				Decide whether to unlock a muffin or donut by seeing if a random integer from 0 to 1 is
+				equal to 0.
+			*/
+			let unlockMuffin = arc4random_uniform(2) == 0
+
+			if unlockMuffin {
+				let randomIndex = arc4random_uniform(UInt32(unownedMuffinStrings.count))
+				let unlockedMuffinString = unownedMuffinStrings[Int(randomIndex)]
+				var currentOwnedMuffins = UserDefaults.standard.array(forKey: "ownedMuffins")
+				currentOwnedMuffins?.append(unlockedMuffinString)
+				UserDefaults.standard.set(currentOwnedMuffins, forKey: "ownedMuffins")
+				attemptToSelectMuffin(withType: GameScene.MuffinType(rawValue: unlockedMuffinString)!)
+
+				// Reset the unlocked muffin’s image view to use the actual muffin, not the mystery.
+				let newMuffinImageView = findMuffinImageView(withType: GameScene.MuffinType(rawValue:
+					unlockedMuffinString)!)
+				newMuffinImageView.image = UIImage(named: unlockedMuffinString)
+			} else {
+				let randomIndex = arc4random_uniform(UInt32(unownedDonutStrings.count))
+				let unlockedDonutString = unownedDonutStrings[Int(randomIndex)]
+				var currentOwnedDonuts = UserDefaults.standard.array(forKey: "ownedDonuts")
+				currentOwnedDonuts?.append(unlockedDonutString)
+				UserDefaults.standard.set(currentOwnedDonuts, forKey: "ownedDonuts")
+				attemptToSelectDonut(withType: GameScene.DonutType(rawValue: unlockedDonutString)!)
+
+				// Reset the unlocked donut’s image view to use the actual donut, not the mystery.
+				let newDonutImageView = findDonutImageView(withType: GameScene.DonutType(rawValue:
+					unlockedDonutString)!)
+				newDonutImageView.image = UIImage(named: unlockedDonutString)
+			}
+
+		/*
+			Check to see if the unownedMuffinStrings’s count is greater than 0 (therefore it is the only
+			one with any unowned values left because the && operator failed).
+		*/
+		} else if unownedMuffinStrings.count > 0 {
+			let randomIndex = arc4random_uniform(UInt32(unownedMuffinStrings.count - 1))
 			let unlockedMuffinString = unownedMuffinStrings[Int(randomIndex)]
 			var currentOwnedMuffins = UserDefaults.standard.array(forKey: "ownedMuffins")
 			currentOwnedMuffins?.append(unlockedMuffinString)
 			UserDefaults.standard.set(currentOwnedMuffins, forKey: "ownedMuffins")
 			attemptToSelectMuffin(withType: GameScene.MuffinType(rawValue: unlockedMuffinString)!)
 
-			// Reset the unlocked muffin’s image view to use the actual muffin, not the mystery muffin.
+			// Reset the unlocked muffin’s image view to use the actual muffin, not the mystery.
 			let newMuffinImageView = findMuffinImageView(withType: GameScene.MuffinType(rawValue:
 				unlockedMuffinString)!)
 			newMuffinImageView.image = UIImage(named: unlockedMuffinString)
+
+		// If all else fails, but hasn’t returned yet, unlock a new donut.
 		} else {
-			let randomIndex = arc4random_uniform(UInt32(unownedDonutStrings.count))
+			let randomIndex = arc4random_uniform(UInt32(unownedDonutStrings.count - 1))
 			let unlockedDonutString = unownedDonutStrings[Int(randomIndex)]
 			var currentOwnedDonuts = UserDefaults.standard.array(forKey: "ownedDonuts")
 			currentOwnedDonuts?.append(unlockedDonutString)
 			UserDefaults.standard.set(currentOwnedDonuts, forKey: "ownedDonuts")
 			attemptToSelectDonut(withType: GameScene.DonutType(rawValue: unlockedDonutString)!)
 
-			// Reset the unlocked donut’s image view to use the actual donut, not the mystery donut.
+			// Reset the unlocked donut’s image view to use the actual donut, not the mystery.
 			let newDonutImageView = findDonutImageView(withType: GameScene.DonutType(rawValue:
 				unlockedDonutString)!)
 			newDonutImageView.image = UIImage(named: unlockedDonutString)
 		}
 
+		// Do some general maitnence on coins.
 		currentCoins -= 100
 		UserDefaults.standard.set(currentCoins, forKey: "coins")
 

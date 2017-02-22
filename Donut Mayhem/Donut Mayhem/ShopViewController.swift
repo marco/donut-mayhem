@@ -330,7 +330,7 @@ class ShopViewController: UIViewController {
 
 	/**
 		Buys and selects random muffin or donut for 100 coins (if the user has enough) when the “buy” button is
-		pressed.
+		pressed, or makes an alert if all unlockables have already been bought.
 	*/
 	@IBAction func buyButtonTouchUpInside() {
 		var currentCoins = UserDefaults.standard.integer(forKey: "coins")

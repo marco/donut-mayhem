@@ -208,11 +208,11 @@ class GameScene: SKScene {
 
 	/**
 		Creates a `UIColor` with a randomized hue.
-		
+
 		- Parameters: 
 			- saturation: The saturation used in the `UIColor`.
 			- brightness: The brightness used in the `UIColor`.
-		
+
 		- Returns: The created `UIColor`.
 	*/
 	func randomizeColor(withSaturation saturation: CGFloat, brightness: CGFloat) -> UIColor {
@@ -231,7 +231,7 @@ class GameScene: SKScene {
 
 	/**
 		Creates an  `SKLabelNode` for the current points total.
-		
+
 		- Parameters:
 			- font: The font family to be used in the label.
 			- fontSize: The font size to be used in the label.
@@ -363,7 +363,7 @@ class GameScene: SKScene {
 	/**
 		Creates a donut of the current type, or a `basicDonut` if the user hasn’t chosen yet, from a random
 		location. Then, the donut moves towards the muffin with the specified speed.
-		
+
 		- Parameters:
 			- speed: The time (in seconds) it takes for the donut to travel 1px towards the muffin.
 	*/
@@ -408,7 +408,7 @@ class GameScene: SKScene {
 
 	/**
 		Creates a `CGPoint` on a random edge of the user’s screen.
-		
+
 		- Returns: The created `CGPoint`.
 	*/
 	func generateRandomEdgePosition() -> CGPoint {
@@ -460,7 +460,7 @@ class GameScene: SKScene {
 
 	/**
 		Creates a bomb that is launched forever towards and past a target location at the specified speed.
-		
+
 		- Parameters:
 			- target: The location where the bomb is aimed.
 			- speed: The time (in seconds) it takes for the bomb to travel 1px towards the specified
@@ -510,7 +510,7 @@ class GameScene: SKScene {
 		Checks to see if any bomb intersects with a donut. If one does, removes them both after a shrinking
 		animation and increase the `score`. Also, increase the `ammoPerRound` and `donutsPerRound` if the
 		current `score` is included in `GameScene`’s `ammoDonutsPerRoundIncreasePoints`.
-		
+
 		- Parameters:
 			- shrinkSpeed: The time (in seconds) it takes for the colliding donut and bomb to collide.
 	*/
@@ -561,10 +561,10 @@ class GameScene: SKScene {
 	/**
 		Normalizes a `CGVector`. In other words, makes it so that its magnitude (or length) is equal to 1, but
 		preserves its direction.
-		
+
 		- Parameters:
 			- vector: The `CGVector` to normalize.
-		
+
 		- Returns: The normalized `CGVector`.
 	*/
 	func normalize(vector: CGVector) -> CGVector {

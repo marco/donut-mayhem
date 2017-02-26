@@ -136,10 +136,10 @@ class ShopViewController: UIViewController {
 
 	/**
 		Finds and returns the `UIImageView` of a `GameScene.MuffinType`.
-		
+
 		- Parameters:
 			- type: The `GameScene.MuffinType` to find the `UIImageView` of.
-		
+
 		- Returns: The `UIImageView` that was found.
 	*/
 	func findMuffinImageView(withType type: GameScene.MuffinType) -> UIImageView {
@@ -161,10 +161,10 @@ class ShopViewController: UIViewController {
 
 	/**
 		Finds and returns the `UIImageView` of a `GameScene.DonutType`.
-		
+
 		- Parameters:
 			- type: The `GameScene.DonutType` to find the `UIImageView` of.
-		
+
 		- Returns: The `UIImageView` that was found.
 	*/
 	func findDonutImageView(withType type: GameScene.DonutType) -> UIImageView {
@@ -186,7 +186,7 @@ class ShopViewController: UIViewController {
 
 	/**
 		Generates and returns an array of currently unowned muffins as `String`s.
-		
+
 		- Returns: The array of currently unowned muffins as `String`s.
 	*/
 	func getUnownedMuffinStrings() -> [String] {
@@ -209,7 +209,7 @@ class ShopViewController: UIViewController {
 
 	/**
 		Generates and returns an array of currently unowned donuts as `String`s.
-		
+
 		- Returns: The array of currently unowned donuts as `String`s.
 	*/
 	func getUnownedDonutStrings() -> [String] {
@@ -232,7 +232,7 @@ class ShopViewController: UIViewController {
 
 	/**
 		Tries to select a muffin with the specified `GameScene.MuffinType`.
-		
+
 		- Parameters:
 			- type: The `GameScene.MuffinType` of the muffin to attempt to select.
 	*/
@@ -251,12 +251,19 @@ class ShopViewController: UIViewController {
 		}
 
 		UserDefaults.standard.set(muffinString, forKey: "muffinType")
+
+		/*
+			Set the description here instead of in refresh because the description should say “Tap to
+			see more detail” at the beginning before a muffin or donut is tapped.
+		*/
+		moreDetailLabel.text = getDescriptionForMuffin(withType: type)
+
 		refresh()
 	}
 
 	/**
 		Tries to select a donut with the specified `GameScene.DonutType`.
-		
+
 		- Parameters:
 			- type: The `GameScene.DonutType` of the donut to attempt to select.
 	*/
@@ -275,12 +282,69 @@ class ShopViewController: UIViewController {
 		}
 
 		UserDefaults.standard.set(donutString, forKey: "donutType")
+
+		/*
+			Set the description here instead of in refresh because the description should say “Tap to
+			see more detail” at the beginning before a muffin or donut is tapped.
+		*/
+		moreDetailLabel.text = getDescriptionForDonut(withType: type)
+
 		refresh()
 	}
 
 	/**
+		Returns a description for a specified `GameScene.MuffinType`.
+
+		- Parameters:
+			- type: The `GameScene.MuffinType` of the muffin to find the description of.
+
+		- Returns: The description of the muffin.
+	*/
+	func getDescriptionForMuffin(withType type: GameScene.MuffinType) -> String {
+		switch type {
+		case GameScene.MuffinType.basicMuffin:
+			return "Basic Muffin"
+		case GameScene.MuffinType.branMuffin:
+			return "Bran Muffin"
+		case GameScene.MuffinType.cupcakeMuffin:
+			return "Cupcake"
+		case GameScene.MuffinType.glutenFreeMuffin:
+			return "Gluten-free Muffin"
+		case GameScene.MuffinType.illuminatiMuffin:
+			return "Illuminati Muffin"
+		case GameScene.MuffinType.swagMuffin:
+			return "Swag Muffin"
+		}
+	}
+
+	/**
+		Returns a description for a specified `GameScene.DonutType`.
+
+		- Parameters:
+			- type: The `GameScene.DonutType` of the donut to find the description of.
+
+		- Returns: The description of the donut.
+	*/
+	func getDescriptionForDonut(withType type: GameScene.DonutType) -> String {
+		switch type {
+		case GameScene.DonutType.bagelDonut:
+			return "Bagel"
+		case GameScene.DonutType.basicDonut:
+			return "Sprinkle Donut"
+		case GameScene.DonutType.evilDonut:
+			return "Evil Donut"
+		case GameScene.DonutType.holeDonut:
+			return "Donut Hole"
+		case GameScene.DonutType.jellyDonut:
+			return "Jelly Donut"
+		case GameScene.DonutType.nerdDonut:
+			return "Nerd Donut"
+		}
+	}
+
+	/**
 		Calls `attemptToSelectMuffin` on the `GameScene.MuffinType` of a muffin when it is pressed.
-		
+
 		- Parameters:
 			- sender: The `UIButton` of the muffin which was pressed.
 	*/
@@ -305,7 +369,7 @@ class ShopViewController: UIViewController {
 
 	/**
 		Calls `attemptToSelectDonut` on the `GameScene.DonutType` of a donut when it is pressed.
-		
+
 		- Parameters:
 			- sender: The `UIButton` of the donut which was pressed.
 	*/

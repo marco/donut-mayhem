@@ -36,6 +36,7 @@ class GameViewController: UIViewController {
 		view.ignoresSiblingOrder = true
 		view.showsFPS = false
 		view.showsNodeCount = false
+		view.isMultipleTouchEnabled = true
 	}
 
 	override var shouldAutorotate: Bool {

@@ -110,6 +110,9 @@ class GameScene: SKScene {
 	/// The time (in seconds) it takes for the donut to travel 1px towards the muffin.
 	let donutSpeed: TimeInterval = 0.015
 
+	/// The time (in seconds) it takes for the muffin to move completely to a given location.
+	let muffinSpeed: TimeInterval = 1
+
 	/// The time (in seconds) it takes for the bomb to travel 1px towards its target.
 	let bombSpeed: TimeInterval = 0.005
 
@@ -166,7 +169,26 @@ class GameScene: SKScene {
 	}
 	
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-		if ammo >= 1 {
+		/*
+			If the user taps in two locations at once, average their location (find the midpoint), and move
+			the muffin there.
+		*/
+		if touches.count == 2 {
+			var xTotal: CGFloat = 0
+			var yTotal: CGFloat = 0
+
+			for touch in touches {
+				xTotal += touch.location(in: self).x
+				yTotal += touch.location(in: self).y
+			}
+
+			let xAverage: CGFloat = xTotal / 2
+			let yAverage: CGFloat = yTotal / 2
+
+			let muffin =  self.childNode(withName: muffinName)
+			muffin?.run(SKAction.move(to: CGPoint(x: xAverage, y: yAverage), duration: muffinSpeed))
+		// If they tap not-twice, shoot normally.
+		} else if ammo >= 1 {
 			createBomb(withTarget: touches.first!.location(in: self), speed: bombSpeed)
 
 			self.ammo -= 1
@@ -194,7 +216,7 @@ class GameScene: SKScene {
 
 		/*
 			If a user taps thrice, change the background color.
-			
+
 			NOTE: first does not mean that this only works the first time the user tries it; rather, it
 			means that only the first in a set of touches is checked when a user is using multitouch.
 		*/
